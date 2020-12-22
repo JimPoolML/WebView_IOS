@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     // MARK: - Out
     @IBOutlet weak var btnBack: UIBarButtonItem!
     @IBOutlet weak var btnForward: UIBarButtonItem!
-    
+    @IBOutlet weak var btnReload: UIBarButtonItem!
+    @IBOutlet weak var btnHome: UIBarButtonItem!
     // MARK: - Private
     private let searchBar = UISearchBar()
     //Global component
@@ -97,6 +98,28 @@ class ViewController: UIViewController {
         webView.goForward()
     }
     
+    
+    @IBAction func btnReloadPage(_ sender: Any) {
+        print("button is reloaded")
+        if webView.url != nil {
+            webView.reload()
+        } else {
+            loadURL(url: searchBar.text ?? "")
+            //webView.load(URLRequest(url: originalURL))
+        }
+        
+        //searchBar.endEditing(true)
+        //Set URL in webView
+        //loadURL(url: searchBar.text ?? "")
+        
+        //webView.reload()
+    }
+    
+    @IBAction func btnHomeAction(_ sender: Any) {
+        //Go home in webView
+        print("button is pressed")
+        loadURL(url: baseURL )
+    }
 }
 
 // MARK: - UISearchDelegate
@@ -131,5 +154,8 @@ extension ViewController: WKNavigationDelegate{
         
         //Assing URL in into searchBar
         searchBar.text = webView.url?.absoluteString
+        
+        //Enable home
+        btnReload.isEnabled = webView.isLoading
     }
 }

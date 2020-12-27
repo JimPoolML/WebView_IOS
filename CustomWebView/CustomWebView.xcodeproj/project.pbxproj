@@ -14,6 +14,7 @@
 		BB52097D25897FB000B83E59 /* CustomWebView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB52097B25897FB000B83E59 /* CustomWebView.xcdatamodeld */; };
 		BB52097F25897FB200B83E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB52097E25897FB200B83E59 /* Assets.xcassets */; };
 		BB52098225897FB300B83E59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB52098025897FB300B83E59 /* LaunchScreen.storyboard */; };
+		BBAA99E12597F4CF006E1F5B /* FavoritePagesControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA99E02597F4CF006E1F5B /* FavoritePagesControllerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BB52097E25897FB200B83E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB52098125897FB300B83E59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB52098325897FB300B83E59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBAA99E02597F4CF006E1F5B /* FavoritePagesControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePagesControllerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				BB52098025897FB300B83E59 /* LaunchScreen.storyboard */,
 				BB52098325897FB300B83E59 /* Info.plist */,
 				BB52097B25897FB000B83E59 /* CustomWebView.xcdatamodeld */,
+				BBAA99E02597F4CF006E1F5B /* FavoritePagesControllerViewController.swift */,
 			);
 			path = CustomWebView;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBAA99E12597F4CF006E1F5B /* FavoritePagesControllerViewController.swift in Sources */,
 				BB52097725897FB000B83E59 /* ViewController.swift in Sources */,
 				BB52097325897FB000B83E59 /* AppDelegate.swift in Sources */,
 				BB52097D25897FB000B83E59 /* CustomWebView.xcdatamodeld in Sources */,

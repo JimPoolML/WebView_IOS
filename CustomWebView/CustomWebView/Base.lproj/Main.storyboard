@@ -46,6 +46,9 @@
                         <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="1SG-V6-dEg"/>
                         <barButtonItem title="Item" image="btn_star" id="sO2-S5-6Zb">
                             <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                            <connections>
+                                <segue destination="cxW-Qk-3Ex" kind="show" identifier="sendFavDataSegue" id="dP6-wJ-JPr"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="jJf-ld-F9E"/>
                         <barButtonItem image="btn_home" id="pnm-aC-anP">
@@ -80,6 +83,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="116"/>
+        </scene>
+        <!--Favorite Pages Controller View Controller-->
+        <scene sceneID="hC2-IW-IVl">
+            <objects>
+                <viewController id="cxW-Qk-3Ex" customClass="FavoritePagesControllerViewController" customModule="CustomWebView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fIv-hI-3lH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Lorem Ipsum" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TrI-vx-Xlf">
+                                <rect key="frame" x="116" y="424" width="182" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="QZy-qw-Daq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8cV-vs-ISY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kzY-UQ-L07" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998.55072463768124" y="127.90178571428571"/>
         </scene>
     </scenes>
     <resources>

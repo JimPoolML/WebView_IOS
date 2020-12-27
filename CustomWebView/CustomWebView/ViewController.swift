@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import AudioToolbox
 
 class ViewController: UIViewController {
 
@@ -23,7 +24,8 @@ class ViewController: UIViewController {
     //Refresh
     private let reloadPage = UIRefreshControl()
     //URL-HOME
-    private let baseURL = "http://www.google.com"
+    var favoritePage : String = ""
+    private let baseURL = "https://www.google.com"
     private let assingPath = "/search?q="
     
     override func viewDidLoad() {
@@ -38,6 +40,8 @@ class ViewController: UIViewController {
         
         //Use delegate
         searchBar.delegate = self
+        searchBar.showsBookmarkButton = true
+        searchBar.setImage(UIImage(named: "btn_star"), for: .bookmark, state: .normal)
         
         //WebView - instance
         //Navigation preferences
@@ -71,6 +75,14 @@ class ViewController: UIViewController {
         loadURL(url: baseURL)
     }
 
+    //MARK: - Send page data
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         
+        if segue.identifier == "sendFavDataSegue"{
+            print("sendFavDataSegue is called")
+        }
+    }
+    
     //MARK: - Another Methods
     private func loadURL(url : String){
         var saveURL: URL!
@@ -84,11 +96,61 @@ class ViewController: UIViewController {
         webView.load(URLRequest(url:  saveURL))
     }
     
+    private func alertDialogPage(){
+        let alertControl = UIAlertController(title: "Mis Favoritos", message: "Agregar a favoritos", preferredStyle: .alert)
+        
+        alertControl.addTextField(configurationHandler: {
+            (_ textField : UITextField ) -> Void in
+            textField.placeholder = "Nombre"
+            textField.textAlignment = .center
+            textField.textColor = UIColor.blue
+            textField.keyboardType = UIKeyboardType.alphabet
+        })
+            
+            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            let saveAction = UIAlertAction(title: "Rename", style: .default)
+            { _ in
+                self.favoritePage = alertControl.textFields?[0].text ?? ""
+                
+                if(self.favoritePage.isEmpty)
+                {
+                    print ("Faltan campos por llenar")
+                    self.toastMessage(msg: "Faltan campos por llenar")
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                }
+                else{
+                    print("Favorite Page: \(String(describing: self.favoritePage)) ")
+                }
+            }
+            
+            alertControl.addAction(actionCancel)
+            alertControl.addAction(saveAction)
+            
+            self.present(alertControl, animated: true, completion: nil)
+    }
+    
+    func toastMessage(msg: String){
+        let alert = UIAlertController(title: nil, message: msg, preferredStyle: .alert)
+           alert.view.backgroundColor = UIColor.black
+           alert.view.alpha = 0.6
+           alert.view.layer.cornerRadius = 15
+
+           present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
+               alert.dismiss(animated: true)
+           }
+    }
+    
+    
+    
     //To use in #selector
     @objc private func rechargePage(){
         webView.reload()
     }
     
+    //MARK: - WebView buttons
     @IBAction func btnBackAction(_ sender: Any) {
         webView.goBack()
     }
@@ -105,14 +167,7 @@ class ViewController: UIViewController {
             webView.reload()
         } else {
             loadURL(url: searchBar.text ?? "")
-            //webView.load(URLRequest(url: originalURL))
         }
-        
-        //searchBar.endEditing(true)
-        //Set URL in webView
-        //loadURL(url: searchBar.text ?? "")
-        
-        //webView.reload()
     }
     
     @IBAction func btnHomeAction(_ sender: Any) {
@@ -132,6 +187,11 @@ extension ViewController : UISearchBarDelegate{
         searchBar.endEditing(true)
         //Set URL in webView
         loadURL(url: searchBar.text ?? "")
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        alertDialogPage()
+        print("click")
     }
 }
 

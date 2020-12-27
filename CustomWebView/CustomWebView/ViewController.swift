@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnHome: UIBarButtonItem!
     // MARK: - Private
     private let searchBar = UISearchBar()
-    //Global component
+    
+    // MARK: Global component
     private var webView = WKWebView()
     //Refresh
     private let reloadPage = UIRefreshControl()
@@ -27,6 +28,9 @@ class ViewController: UIViewController {
     var favoritePage : String = ""
     private let baseURL = "https://www.google.com"
     private let assingPath = "/search?q="
+    var sendPage : String = ""
+    var isTruePage : Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +78,32 @@ class ViewController: UIViewController {
         
         loadURL(url: baseURL)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        print("viewDidAppear First Controller")
+        //load data in shared preferences
+        isTruePage = UserDefaults.standard.object(forKey: "pageTrue") as! Int
+        print(isTruePage)
+        if(isTruePage == 1){
+            let realFavoritePage = UserDefaults.standard.object(forKey: "realFavoritePage")
+            //Avoid reload a favorite page
+            isTruePage = 0
+            UserDefaults.standard.set(isTruePage, forKey: "pageTrue")
+            loadURL(url: realFavoritePage as! String)
+        }
+    }
 
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { context in
+            if UIApplication.shared.statusBarOrientation.isLandscape {
+                self.loadURL(url: self.searchBar.text ?? "")
+            } else {
+                self.loadURL(url: self.searchBar.text ?? "")
+            }
+        })
+    }
+    
     //MARK: - Send page data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          
@@ -95,6 +124,33 @@ class ViewController: UIViewController {
         }
         webView.load(URLRequest(url:  saveURL))
     }
+    
+    private func addFavoriteItems(favPage : String){
+        //doesn't add empty values
+        let favPage = favPage.trimmingCharacters(in: .whitespacesAndNewlines)
+        if (favPage == ""){
+            //setAlert()
+            print("doesn't add empty values")
+            return
+        }
+        
+        let simpleItems = UserDefaults.standard.object(forKey: "addItem")
+            var items : [String]
+            
+            //Safe casting
+            if let auxItem = simpleItems as? [String]{
+                items = auxItem
+                items.append(favPage)
+            }else{
+                items = [favPage]
+            }
+        
+            print(items)
+            //save data in shared preferences
+            UserDefaults.standard.set(items, forKey: "addItem")
+    }
+    
+    
     
     private func alertDialogPage(){
         let alertControl = UIAlertController(title: "Mis Favoritos", message: "Agregar a favoritos", preferredStyle: .alert)
@@ -120,6 +176,7 @@ class ViewController: UIViewController {
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
                 else{
+                    self.addFavoriteItems(favPage : self.searchBar.text ?? "")
                     print("Favorite Page: \(String(describing: self.favoritePage)) ")
                 }
             }

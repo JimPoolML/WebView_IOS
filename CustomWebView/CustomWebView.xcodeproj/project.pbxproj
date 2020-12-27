@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB52097325897FB000B83E59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52097225897FB000B83E59 /* AppDelegate.swift */; };
 		BB52097525897FB000B83E59 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52097425897FB000B83E59 /* SceneDelegate.swift */; };
 		BB52097725897FB000B83E59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52097625897FB000B83E59 /* ViewController.swift */; };
 		BB52097A25897FB000B83E59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB52097825897FB000B83E59 /* Main.storyboard */; };
 		BB52097D25897FB000B83E59 /* CustomWebView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB52097B25897FB000B83E59 /* CustomWebView.xcdatamodeld */; };
 		BB52097F25897FB200B83E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB52097E25897FB200B83E59 /* Assets.xcassets */; };
 		BB52098225897FB300B83E59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB52098025897FB300B83E59 /* LaunchScreen.storyboard */; };
-		BBAA99E12597F4CF006E1F5B /* FavoritePagesControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA99E02597F4CF006E1F5B /* FavoritePagesControllerViewController.swift */; };
+		BBAAA9ED2598BA8C004D5743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB52097225897FB000B83E59 /* AppDelegate.swift */; };
+		BBAAA9EE2598BB99004D5743 /* FavoritePagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA99E02597F4CF006E1F5B /* FavoritePagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		BB52097E25897FB200B83E59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB52098125897FB300B83E59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB52098325897FB300B83E59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BBAA99E02597F4CF006E1F5B /* FavoritePagesControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePagesControllerViewController.swift; sourceTree = "<group>"; };
+		BBAA99E02597F4CF006E1F5B /* FavoritePagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePagesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +63,12 @@
 				BB52097225897FB000B83E59 /* AppDelegate.swift */,
 				BB52097425897FB000B83E59 /* SceneDelegate.swift */,
 				BB52097625897FB000B83E59 /* ViewController.swift */,
+				BBAA99E02597F4CF006E1F5B /* FavoritePagesViewController.swift */,
 				BB52097825897FB000B83E59 /* Main.storyboard */,
 				BB52097E25897FB200B83E59 /* Assets.xcassets */,
 				BB52098025897FB300B83E59 /* LaunchScreen.storyboard */,
 				BB52098325897FB300B83E59 /* Info.plist */,
 				BB52097B25897FB000B83E59 /* CustomWebView.xcdatamodeld */,
-				BBAA99E02597F4CF006E1F5B /* FavoritePagesControllerViewController.swift */,
 			);
 			path = CustomWebView;
 			sourceTree = "<group>";
@@ -144,10 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBAA99E12597F4CF006E1F5B /* FavoritePagesControllerViewController.swift in Sources */,
+				BBAAA9EE2598BB99004D5743 /* FavoritePagesViewController.swift in Sources */,
 				BB52097725897FB000B83E59 /* ViewController.swift in Sources */,
-				BB52097325897FB000B83E59 /* AppDelegate.swift in Sources */,
 				BB52097D25897FB000B83E59 /* CustomWebView.xcdatamodeld in Sources */,
+				BBAAA9ED2598BA8C004D5743 /* AppDelegate.swift in Sources */,
 				BB52097525897FB000B83E59 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
